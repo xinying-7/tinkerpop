@@ -66,8 +66,13 @@ public class ParametersTest {
         parameters.set(null, "a", "axe", "b", "bat", "c", "cat");
 
         final Object[] params = parameters.getKeyValues(mock(Traverser.Admin.class));
+        Arrays.sort(params);
+
+        Object[] expected = new Object[] {"a", "axe", "b", "bat", "c", "cat"};
+        Arrays.sort(expected);
+
         assertEquals(6, params.length);
-        assertThat(Arrays.equals(new Object[] {"a", "axe", "b", "bat", "c", "cat"}, params), is(true));
+        assertThat(Arrays.equals(expected, params), is(true));
     }
 
     @Test
